@@ -836,6 +836,11 @@ class GlobalBindings {
       setTimeout(() => this.connect(username, host, port, tokens, password, channelName), 5000)
     }
 
+    this.disconnect = () => {
+      this.resetClient()
+      ui.connectDialog.show()
+    }
+
     this.connected = () => this.thisUser() != null
 
     this._updateVoiceHandler = () => {

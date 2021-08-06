@@ -166,6 +166,7 @@ ISC
 
 ### Attribution
 themes/MetroMumbleLight/svg/disconnect.svg created by [Freepik](https://www.freepik.com) from https://www.flaticon.com/
+themes/MetroMumbleLight/svg/{full,minimal}-view.svg created by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) from https://www.flaticon.com/
 
 [Mumble]: https://wiki.mumble.info/wiki/Main_Page
 [mumble-web-proxy]: https://github.com/johni0702/mumble-web-proxy

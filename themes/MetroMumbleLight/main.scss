@@ -484,12 +484,6 @@ form {
 .minimal .toolbar-vertical ~ .channel-root-container {
   width: calc(98% - 42px);
 }
-.minimal .handle-horizontal {
-  display: none;
-}
-.minimal .handle-vertical {
-  display: none;
-}
 .minimal .divider {
   display: none;
 }
@@ -503,9 +497,6 @@ form {
   display: none;
 }
 .minimal .tb-comment {
-  display: none;
-}
-.minimal .tb-settings {
   display: none;
 }
 .minimal .tb-sourcecode {

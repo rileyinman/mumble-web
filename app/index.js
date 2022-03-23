@@ -515,6 +515,7 @@ class GlobalBindings {
 
         // Register future channels
         client.on('newChannel', channel => this._newChannel(channel))
+
         // Register future users
         client.on('newUser', user => this._newUser(user))
 
@@ -1069,7 +1070,7 @@ class GlobalBindings {
     }
 
     this.updateSize = () => {
-      this.minimalView(window.innerWidth < 320)
+      !this.minimalView && this.minimalView(window.innerWidth < 320)
       if (this.minimalView()) {
         this.toolbarHorizontal(window.innerWidth < window.innerHeight)
       } else {
@@ -1087,8 +1088,10 @@ function initializeUI () {
   var queryParams = url.parse(document.location.href, true).query
   queryParams = Object.assign({}, window.mumbleWebConfig.defaults, queryParams)
   var useJoinDialog = queryParams.joinDialog
+  var defaultMinimal = false
   if (queryParams.matrix) {
     useJoinDialog = true
+    defaultMinimal = true
   }
   if (queryParams.address) {
     ui.connectDialog.address(queryParams.address)
@@ -1156,6 +1159,7 @@ function initializeUI () {
 
   window.onresize = () => ui.updateSize()
   ui.updateSize()
+  ui.minimalView(defaultMinimal)
 }
 
 function log () {

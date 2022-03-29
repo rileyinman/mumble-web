@@ -1,35 +1,12 @@
-FROM alpine:edge
+FROM node:current-alpine
 
-LABEL maintainer="Andreas Peters <support@aventer.biz>"
+RUN apk add --no-cache websockify
 
-COPY ./ /home/node
+COPY . /usr/share/mumble-web
 
-RUN echo http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repositories && \
-    apk add --no-cache git nodejs npm tini websockify && \
-    adduser -D -g 1001 -u 1001 -h /home/node node && \
-    mkdir -p /home/node && \
-    mkdir -p /home/node/.npm-global && \
-    mkdir -p /home/node/app  && \
-    chown -R node: /home/node 
+WORKDIR /usr/share/mumble-web
 
-USER node
+RUN npm install && npm run build
 
-ENV PATH=/home/node/.npm-global/bin:$PATH
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
-
-RUN cd /home/node && \
-    npm install && \
-    npm run build 
-
-USER root
-
-RUN apk del gcc git
-
-USER node
-
-EXPOSE 8080
-ENV MUMBLE_SERVER=mumble.aventer.biz:64738
-
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD websockify --ssl-target --web=/home/node/dist 8080 "$MUMBLE_SERVER"
-
+ENV MUMBLE_SERVER
+CMD [ "websockify", "--web=/app/dist", "--ssl-target", "8080", "$MUMBLE_SERVER" ]

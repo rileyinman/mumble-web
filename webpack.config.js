@@ -12,7 +12,10 @@ module.exports = {
     theme: './app/theme.js',
     matrix: './app/matrix.js'
   },
-  devtool: "cheap-source-map",
+  resolve: {
+    roots: [ theme ]
+  },
+  devtool: 'cheap-source-map',
   output: {
     path: path.join(__dirname, 'dist'),
     chunkFilename: '[chunkhash].js',
@@ -39,13 +42,25 @@ module.exports = {
             options: { 'name': '[name].[ext]' }
           },
           {
-            loader: "extract-loader"
+            loader: 'extract-loader'
           },
           {
             loader: 'html-loader',
             options: {
-              attrs: ['img:src', 'link:href'],
-              root: theme
+              attributes: {
+                list: [
+                  {
+                    tag: 'img',
+                    attribute: 'src',
+                    type: 'src'
+                  },
+                  {
+                    tag: 'link',
+                    attribute: 'href',
+                    type: 'src'
+                  }
+                ]
+              }
             }
           }
         ]

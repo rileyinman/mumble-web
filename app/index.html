@@ -19,7 +19,7 @@
     <script src="config.local.js"></script>
     <script src="theme.js"></script>
     <script src="matrix.js"></script>
-    
+
     <title>Mumble web</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
     </div>
     <div id="container" style="display: none" data-bind="visible: true,
                                                          css: { minimal: minimalView }">
-      <!-- ko with: connectDialog --> 
+      <!-- ko with: connectDialog -->
       <div class="connect-dialog dialog" role="dialog" aria-labelledby="connect-dialog_title" data-bind="visible: visible() && !joinOnly()">
           <div id="connect-dialog_title" class="dialog-header">
             Connect to Server
@@ -594,13 +594,13 @@
         <form data-bind="submit: submitMessageBox">
           <textarea id="message-box" row=1 data-bind="
               attr: { placeholder: messageBoxHint, 'aria-label': messageBoxHint },
-              textInput: messageBox, 
+              textInput: messageBox,
               event: {keypress: submitOnEnter}"></textarea>
         </form>
       </div>
       <script type="text/html" id="channel">
         <div class="channel" data-bind="
-            click: $root.select, 
+            click: $root.select,
             event: {
               contextmenu: openContextMenu,
               dblclick: $root.requestMove.bind($root, $root.thisUser())
@@ -649,7 +649,7 @@
                   alt="server mute" src="/svg/muted_server.svg">
               <img class="user-suppress-mute" data-bind="visible: suppress"
                   alt="suppressed" src="/svg/muted_suppressed.svg">
-              <img class="user-self-mute" data-bind="visible: selfMute" 
+              <img class="user-self-mute" data-bind="visible: selfMute"
                   alt="self mute" src="/svg/muted_self.svg">
               <img class="user-server-deaf" data-bind="visible: deaf"
                   alt="server deaf" src="/svg/deafened_server.svg">

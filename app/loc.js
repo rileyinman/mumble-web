@@ -1,6 +1,6 @@
 /**
  * the default language to use
- * 
+ *
  * @var {string}
  * @author svartoyg
  */
@@ -9,7 +9,7 @@ var _languageDefault = null;
 
 /**
  * the fallback language to use
- * 
+ *
  * @var {string}
  * @author svartoyg
  */
@@ -18,7 +18,7 @@ var _languageFallback = null;
 
 /**
  * two level map with ISO-639-1 code as first key and translation id as second key
- * 
+ *
  * @var {Map<string,Map<string,string>>}
  * @author svartoyg
  */
@@ -77,7 +77,7 @@ export async function initialize (languageDefault, languageFallback = 'en') {
 
 /**
  * gets a translation by its key for a specific language
- * 
+ *
  * @param {string} key
  * @param {string} [languageChosen]
  * @return {string}

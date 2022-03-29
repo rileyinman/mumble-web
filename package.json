@@ -45,10 +45,10 @@
     "mumble-client": "github:rileyinman/mumble-client#1.4.0",
     "mumble-client-codecs-browser": "^1.2.0",
     "mumble-client-websocket": "github:johni0702/mumble-client-websocket#5b0ed8d",
-    "node-sass": "^4.14.1",
     "patch-package": "^6.2.1",
     "raw-loader": "^4.0.2",
     "regexp-replace-loader": "1.0.1",
+    "sass": "^1.49.9",
     "sass-loader": "^8.0.2",
     "stream-chunker": "^1.2.8",
     "subworkers": "^1.0.1",
@@ -59,6 +59,5 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "worker-loader": "^2.0.0"
-  },
-  "optionalDependencies": {}
+  }
 }

@@ -1,12 +1,10 @@
 FROM node:current-alpine
 
-RUN apk add --no-cache websockify
+RUN apk add --no-cache g++ make
 
-COPY . /usr/share/mumble-web
+COPY . /var/www/mumble-web
 
-WORKDIR /usr/share/mumble-web
+WORKDIR /var/www/mumble-web
 
-RUN npm install && npm run build
-
-ENV MUMBLE_SERVER
-CMD [ "websockify", "--web=/app/dist", "--ssl-target", "8080", "$MUMBLE_SERVER" ]
+ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN npm install

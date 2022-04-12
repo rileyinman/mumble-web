@@ -9,5 +9,10 @@ WORKDIR /var/www/mumble-web
 ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npm install
 
-FROM scratch AS export
-COPY --from=build /var/www/mumble-web/dist .
+FROM node:current-alpine AS serve
+
+RUN apk add --no-cache lighttpd
+
+COPY --from=build /var/www/mumble-web/dist /var/www/localhost/htdocs
+
+ENTRYPOINT ["/usr/sbin/lighttpd", "-D"]

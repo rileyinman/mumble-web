@@ -73,8 +73,9 @@ module.exports = {
         test: /\.scss$/,
         use: [
           {
-            loader: 'file-loader?name=[hash].css',
+            loader: 'file-loader',
             options: {
+              name: '[hash].css',
               esModule: false
             }
           },

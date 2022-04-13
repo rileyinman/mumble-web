@@ -15,4 +15,4 @@ RUN apk add --no-cache lighttpd
 
 COPY --from=build /var/www/mumble-web/dist /var/www/localhost/htdocs
 
-ENTRYPOINT ["/usr/sbin/lighttpd", "-D"]
+ENTRYPOINT ["/usr/sbin/lighttpd", "-D", "-f", "/etc/lighttpd/lighttpd.conf"]

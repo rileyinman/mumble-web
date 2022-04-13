@@ -1,4 +1,3 @@
-var theme = '../themes/MetroMumbleLight'
 var path = require('path');
 
 module.exports = {
@@ -11,9 +10,6 @@ module.exports = {
     config: './app/config.js',
     theme: './app/theme.js',
     matrix: './app/matrix.js'
-  },
-  resolve: {
-    roots: [ theme ]
   },
   devtool: 'cheap-source-map',
   output: {
@@ -76,7 +72,12 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'file-loader?name=[hash].css',
+          {
+            loader: 'file-loader?name=[hash].css',
+            options: {
+              esModule: false
+            }
+          },
           'extract-loader',
           'css-loader',
           'sass-loader'
